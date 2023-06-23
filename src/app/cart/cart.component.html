@@ -13,7 +13,7 @@
           fxLayoutAlign.xs="start center" fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center"
           fxLayoutGap="10px" *ngFor=" let item of this.basketItems " style="margin-bottom: 5%;">
           <div fxFlex fxFlex.gt-sm="20%">
-            <img height="150" width="200" [src]="item.image" alt="aciklanma">
+            <img height="150" width="200" [src]="item.image" [alt]="item.name">
           </div>
           <div fxFlex fxFlex.gt-sm="60%" style="text-align: initial;">
             <p style="font-weight: bold;">{{item.name}}</p>
