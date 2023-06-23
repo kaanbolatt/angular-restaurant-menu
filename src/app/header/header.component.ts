@@ -7,7 +7,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  headerVisible: boolean = true;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {

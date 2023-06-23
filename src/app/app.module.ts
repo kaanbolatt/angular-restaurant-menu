@@ -14,7 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatSnackBarModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,9 +25,10 @@ import {MatSliderModule} from '@angular/material/slider';
 import { RestangularModule } from 'ngx-restangular';
 import { RestangularConfigFactory } from './shared/restConfig';
 
-
 import { baseURL } from './shared/baseurl';
 import { CartComponent } from './cart/cart.component';
+import { DetailComponent } from './detail/detail.component';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CartComponent } from './cart/cart.component';
     AboutComponent,
     HomeComponent,
     CartComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,10 +57,12 @@ import { CartComponent } from './cart/cart.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatSliderModule,
+    MatSnackBarModule,
     RestangularModule.forRoot(RestangularConfigFactory)
   ],
   providers: [
     {provide: 'BaseURL', useValue: baseURL},
+    DataService
   ],
   bootstrap: [AppComponent]
 })

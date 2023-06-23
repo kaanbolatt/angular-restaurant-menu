@@ -1,31 +1,33 @@
-<div class="container"
-     fxLayout="column"
-     fxLayoutGap="10px">
-
-  <div fxFlex>
-    <div>
-      <h3>Menu</h3>
+<h2 style="text-align: center;">Our Specialties</h2>
+<hr>
+<div class="container" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="10px">
+  <div fxFlex="20%" *ngFor="let product of products">
+    <mat-card class="example-card mr-5"
+      style="background-color: white;  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);">
+      <mat-card-header style="min-width: 400px;">
+        <img mat-card-image width="300px" height="300px"
+          style="max-width: 300px; min-width: 300px; max-height: 300px; min-height: 300px;" [src]="product.image"
+          [alt]="product.name">
+      </mat-card-header>
       <hr>
-    </div>
-  </div>
+      <mat-card-content class="prod-price">
+        <mat-card-title style="min-height: 100px;">{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.description}}</mat-card-subtitle>
+        <hr>
+        <p>
+          {{product.price | currency:'EUR':'symbol-narrow':'1.2-2'}}
+        </p>
 
-  <div fxFlex *ngIf="dishes">
-    <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
-        <img height="200px" src="{{BaseURL + dish.image}}" alt={{dish.name}}>
-        <mat-grid-tile-footer>
-          <h1 mat-line>{{dish.name | uppercase}}</h1>
-        </mat-grid-tile-footer>
-      </mat-grid-tile>
-    </mat-grid-list>
+        <hr>
+      </mat-card-content>
+      <mat-card-actions style="text-align: center;">
+        <p *ngIf="!product.availability" style="color: red;">
+          This product is not available.
+        </p>
+        <button *ngIf="product.availability" mat-raised-button color="primary" (click)="gotoDetail(product.id)">Details</button>
+        <button *ngIf="product.availability" mat-raised-button color="warn" (click)="addBasket(product.id)"><i
+            class="material-icons">add_shopping_cart</i> Order</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-  <div [hidden]="dishes || errMess">
-    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-  </div>
-  <div *ngIf="errMess">
-    <h2>Error</h2>
-    <h4>{{errMess}}</h4>
-  </div>
-
-
 </div>
