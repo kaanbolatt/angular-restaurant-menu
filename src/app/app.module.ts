@@ -20,7 +20,6 @@ import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import {  PromotionService} from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import { LoginComponent } from './login/login.component';
 import {MatDialogModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -46,7 +45,6 @@ import { baseURL } from './shared/baseurl';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +64,6 @@ import { baseURL } from './shared/baseurl';
     MatSliderModule,
     HttpModule,
     RestangularModule.forRoot(RestangularConfigFactory)
-  ],
-  entryComponents: [
-    LoginComponent
   ],
   providers: [
     DishService,
