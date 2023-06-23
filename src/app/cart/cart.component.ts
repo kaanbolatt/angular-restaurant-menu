@@ -45,6 +45,7 @@ export class CartComponent implements OnInit {
     }else{
       this.totaDiscount = 0;
     }
+    this.totalAmountVAT = this.totaDiscount != 0 ? this.totaDiscount : this.totalService;
   }
 
 
